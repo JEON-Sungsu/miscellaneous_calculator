@@ -21,7 +21,7 @@ class RealLifeCalculatorViewModel with ChangeNotifier {
       case >= 25:
         _state = _state.copyWith(bmiResult: '1단계 비만 입니다.');
       case >= 23:
-        _state = _state.copyWith(bmiResult: '과제중 입니다.');
+        _state = _state.copyWith(bmiResult: '과체중 입니다.');
       case >= 18.5:
         _state = _state.copyWith(bmiResult: '정상 체중 입니다.');
       default :
