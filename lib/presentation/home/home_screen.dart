@@ -23,30 +23,31 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       body: SafeArea(
         child: SliderDrawer(
-          sliderOpenSize: 180,
-          key: _sliderDrawerKey,
-          appBar: const SliderAppBar(
-            appBarPadding: EdgeInsets.zero,
-            appBarColor: Color.fromRGBO(240, 237, 204, 1),
-            title: Text(
-              '잡학 계산기',
-              style: TextStyle(
-                fontWeight: FontWeight.w700,
-                fontSize: 24,
-                color: Color.fromRGBO(2, 52, 63, 1),
+            sliderOpenSize: 180,
+            key: _sliderDrawerKey,
+            appBar: const SliderAppBar(
+              appBarPadding: EdgeInsets.zero,
+              appBarColor: Color.fromRGBO(240, 237, 204, 1),
+              title: Text(
+                '잡학 계산기',
+                style: TextStyle(
+                  fontWeight: FontWeight.w700,
+                  fontSize: 24,
+                  color: Color.fromRGBO(2, 52, 63, 1),
+                ),
               ),
             ),
-          ),
-          slider: SliderView(
-            onItemClick: (title, pageId) {
-              _sliderDrawerKey.currentState!.closeSlider();
-              setState(() {
-                _currentPage = pageId;
-              });
-            },
-          ),
-          child: page[_currentPage],
-        ),
+            slider: SliderView(
+              onItemClick: (title, pageId) {
+                _sliderDrawerKey.currentState!.closeSlider();
+                setState(() {
+                  _currentPage = pageId;
+                });
+              },
+            ),
+            child: SingleChildScrollView(
+              child: page[_currentPage],
+            )),
       ),
     );
   }
