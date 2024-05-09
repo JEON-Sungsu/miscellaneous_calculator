@@ -35,54 +35,56 @@ class _RealLifeAccordionListState extends State<RealLifeAccordionList> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const Padding(
-            padding: EdgeInsets.fromLTRB(0, 12, 0, 16),
-            child: Text(
-              '실생활편',
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.w700,
-                color: Color.fromRGBO(2, 52, 63, 1),
+      child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Padding(
+              padding: EdgeInsets.fromLTRB(0, 12, 0, 16),
+              child: Text(
+                '실생활편',
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.w700,
+                  color: Color.fromRGBO(2, 52, 63, 1),
+                ),
               ),
             ),
-          ),
-          ExpansionPanelList(
-            expandedHeaderPadding: const EdgeInsets.all(10.0),
-            materialGapSize: 12,
-            dividerColor: Colors.indigo,
-            expansionCallback: (int index, bool isExpanded) {
-              setState(() {
-                itemList[index].isExpanded = isExpanded;
-              });
-            },
-            children: itemList.map((e) {
-              return ExpansionPanel(
-                canTapOnHeader: true,
-                backgroundColor: Colors.white,
-                headerBuilder: (BuildContext context, bool isExpanded) {
-                  return Padding(
-                    padding: const EdgeInsets.all(12.0),
-                    child: Text(
-                      e.headerValue,
-                      style: const TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w700,
+            ExpansionPanelList(
+              expandedHeaderPadding: const EdgeInsets.all(10.0),
+              materialGapSize: 12,
+              dividerColor: Colors.indigo,
+              expansionCallback: (int index, bool isExpanded) {
+                setState(() {
+                  itemList[index].isExpanded = isExpanded;
+                });
+              },
+              children: itemList.map((e) {
+                return ExpansionPanel(
+                  canTapOnHeader: true,
+                  backgroundColor: Colors.white,
+                  headerBuilder: (BuildContext context, bool isExpanded) {
+                    return Padding(
+                      padding: const EdgeInsets.all(12.0),
+                      child: Text(
+                        e.headerValue,
+                        style: const TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w700,
+                        ),
                       ),
-                    ),
-                  );
-                },
-                body: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: e.child,
-                ),
-                isExpanded: e.isExpanded,
-              );
-            }).toList(),
-          ),
-        ],
+                    );
+                  },
+                  body: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: e.child,
+                  ),
+                  isExpanded: e.isExpanded,
+                );
+              }).toList(),
+            ),
+          ],
+        ),
       ),
     );
   }

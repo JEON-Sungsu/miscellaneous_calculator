@@ -16,7 +16,7 @@ class SliderView extends StatelessWidget {
           CircleAvatar(
             radius: 80,
             backgroundImage: Image.asset(
-              'assets/main_avartar.JPG',
+              'assets/main_avatar_3.JPG',
               fit: BoxFit.fill,
             ).image,
           ),
